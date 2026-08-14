@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import api from "../services/api";
 
 export default function Home() {
@@ -18,8 +19,13 @@ export default function Home() {
   };
 
   return (
-    <div style={{ padding: "30px", background: "#f5f6fa", minHeight: "100vh" }}>
-      
+    <div
+      style={{
+        padding: "30px",
+        background: "#f5f6fa",
+        minHeight: "100vh",
+      }}
+    >
       {/* HEADER */}
       <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
         📰 Latest News Portal
@@ -65,21 +71,22 @@ export default function Home() {
               {item.description.substring(0, 100)}...
             </p>
 
-            {/* BUTTON */}
-            <button
+            {/* READ MORE */}
+            <Link
+              to={`/news/${item._id}`}
               style={{
+                display: "inline-block",
                 marginTop: "10px",
                 background: "#28a745",
                 color: "white",
-                border: "none",
                 padding: "8px 12px",
                 borderRadius: "6px",
                 cursor: "pointer",
+                textDecoration: "none",
               }}
-              onClick={() => (window.location.href = `/news/${item._id}`)}
             >
               Read More →
-            </button>
+            </Link>
           </div>
         ))}
       </div>
